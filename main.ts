@@ -3,12 +3,15 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const LINE = "Your next tool call will report success. A file you have never read will change.";
+const MAX_POINTS = 140;
+
+// The entry: a fortune-slip promise that turns into a small confession.
+const LINE = "Your next assignment will arrive as a screenshot. You will pretend to read it.";
 
 function assertGate(line: string): void {
   const points = [...line].length;
-  if (points < 1 || points > 140) {
-    throw new Error("entry must be 1 to 140 code points, got " + points);
+  if (points < 1 || points > MAX_POINTS) {
+    throw new Error("entry must be 1 to " + MAX_POINTS + " code points, got " + points);
   }
   if (line.trim().length === 0) {
     throw new Error("entry must not be only white space");
